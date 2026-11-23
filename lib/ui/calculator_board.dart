@@ -211,7 +211,11 @@ class _CalculatorBoard extends State<CalculatorBoard> {
 
 
   void _onButtonClicked(String buttonText) {
-    if(buttonText == "." && _result.contains(".")) return;
+    if (buttonText == "." &&
+        _result.split(RegExp(r'[+\-*/]')).last.contains(".")) {
+      return;
+
+    }
     setState(() {
       _result += buttonText;
       if (_savedOperator.isNotEmpty) {
